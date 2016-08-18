@@ -1,18 +1,17 @@
-
 import java.util.Stack;
-import java.util.Queue;
 
 public class DataStructureApp {
 
 	public static void main(String[] args) {
-		String userInput = "52+";
+		// TODO Auto-generated method stub
+
+		String userInput = "52*3+";
 		String userInputToTurnIntoInt;
 		int length = userInput.length();
-
 		Stack<Integer> s = new Stack<Integer>();
-		int sizeOfStack;
+
 		for (int i = 0; i < userInput.length(); i++) {
-			while (userInput.charAt(i) == '1' || userInput.charAt(i) == '2' || userInput.charAt(i) == '3'
+			if (userInput.charAt(i) == '1' || userInput.charAt(i) == '2' || userInput.charAt(i) == '3'
 					|| userInput.charAt(i) == '4' || userInput.charAt(i) == '5' || userInput.charAt(i) == '6'
 					|| userInput.charAt(i) == '7' || userInput.charAt(i) == '8' || userInput.charAt(i) == '9')
 
@@ -20,45 +19,46 @@ public class DataStructureApp {
 				userInputToTurnIntoInt = "" + userInput.charAt(i);
 				int x = Integer.parseInt(userInputToTurnIntoInt);
 				s.push(x);
-				// System.out.println(x);
+
 			}
 
-			while (userInput.charAt(i) == '+' || userInput.charAt(i) == '-' || userInput.charAt(i) == '*'
-					|| userInput.charAt(i) == '/') {
-
+			else {
 				int a = s.pop();
 				int b = s.pop();
-				int sum;
+				int result;
 				char c = userInput.charAt(i);
-
 				if (c == '+')
 
 				{
-					sum = a + b;
-					s.push(sum);
-					System.out.println(s.pop());
+					result = a + b;
+					s.push(result);
+
+				} 
+				else if (c == '-') 
+				
+				{
+					result = b - a;
+					s.push(result);
+
+				} 
+				
+				else if (c == '*') 
+				{
+					result = (a * b);
+					s.push(result);
+
 				}
 
-				else if (c == '-') {
-					sum = b - a;
-					s.push(sum);
-
-				} else if (b == '*') {
-					sum = a * b;
-					s.push(sum);
-
-				}
-
-				else if (b == '/') {
-					sum = a / b;
-					s.push(sum);
+				else if (c == '/') {
+					result = b/a;
+					s.push(result);
 
 				}
 
 			}
-			System.out.println(s.pop());
+
 		}
+		System.out.println(s.pop());
 
 	}
-
 }
